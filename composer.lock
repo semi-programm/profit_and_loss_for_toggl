@@ -4,8 +4,47 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "942e17a783211f0f01da705bed97a42a",
+    "content-hash": "d764e4ec0b730b918c87d4922f307d10",
     "packages": [
+        {
+            "name": "almasaeed2010/adminlte",
+            "version": "v3.0.0-rc.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ColorlibHQ/AdminLTE.git",
+                "reference": "14967aec9459073e46283b67657f1204e98aa56b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ColorlibHQ/AdminLTE/zipball/14967aec9459073e46283b67657f1204e98aa56b",
+                "reference": "14967aec9459073e46283b67657f1204e98aa56b",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Colorlib"
+                }
+            ],
+            "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 4",
+            "homepage": "http://adminlte.io/",
+            "keywords": [
+                "JS",
+                "admin",
+                "back-end",
+                "css",
+                "less",
+                "responsive",
+                "template",
+                "theme",
+                "web"
+            ],
+            "time": "2019-10-19T09:38:03+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -469,6 +508,60 @@
             "time": "2018-09-29T18:48:56+00:00"
         },
         {
+            "name": "jeroennoten/laravel-adminlte",
+            "version": "v3.0.0-rc.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jeroennoten/Laravel-AdminLTE.git",
+                "reference": "3caadb1765e1c2a0c2fa021fd42a2aeab1815486"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jeroennoten/Laravel-AdminLTE/zipball/3caadb1765e1c2a0c2fa021fd42a2aeab1815486",
+                "reference": "3caadb1765e1c2a0c2fa021fd42a2aeab1815486",
+                "shasum": ""
+            },
+            "require": {
+                "almasaeed2010/adminlte": "^3.0.0-rc.4",
+                "laravel/framework": "^6.0",
+                "php": ">=7.2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "JeroenNoten\\LaravelAdminLte\\AdminLteServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JeroenNoten\\LaravelAdminLte\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeroen Noten",
+                    "email": "jeroennoten@me.com"
+                }
+            ],
+            "description": "Easy AdminLTE integration with Laravel",
+            "keywords": [
+                "AdminLTE",
+                "admin",
+                "administrator",
+                "laravel"
+            ],
+            "time": "2019-10-16T15:52:22+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v6.0.4",
             "source": {
@@ -843,16 +936,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.25.2",
+            "version": "2.25.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "443fe5f1498147e0fbc792142b5dc43e2e8a533f"
+                "reference": "d07636581795383e2fea2d711212d30f941f2039"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/443fe5f1498147e0fbc792142b5dc43e2e8a533f",
-                "reference": "443fe5f1498147e0fbc792142b5dc43e2e8a533f",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/d07636581795383e2fea2d711212d30f941f2039",
+                "reference": "d07636581795383e2fea2d711212d30f941f2039",
                 "shasum": ""
             },
             "require": {
@@ -906,7 +999,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-10-14T14:18:59+00:00"
+            "time": "2019-10-20T11:05:44+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -961,16 +1054,16 @@
         },
         {
             "name": "opis/closure",
-            "version": "3.4.0",
+            "version": "3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opis/closure.git",
-                "reference": "60a97fff133b1669a5b1776aa8ab06db3f3962b7"
+                "reference": "e79f851749c3caa836d7ccc01ede5828feb762c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opis/closure/zipball/60a97fff133b1669a5b1776aa8ab06db3f3962b7",
-                "reference": "60a97fff133b1669a5b1776aa8ab06db3f3962b7",
+                "url": "https://api.github.com/repos/opis/closure/zipball/e79f851749c3caa836d7ccc01ede5828feb762c7",
+                "reference": "e79f851749c3caa836d7ccc01ede5828feb762c7",
                 "shasum": ""
             },
             "require": {
@@ -1018,7 +1111,7 @@
                 "serialization",
                 "serialize"
             ],
-            "time": "2019-09-02T21:07:33+00:00"
+            "time": "2019-10-19T18:38:51+00:00"
         },
         {
             "name": "paragonie/random_compat",
