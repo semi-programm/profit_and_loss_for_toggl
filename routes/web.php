@@ -16,3 +16,5 @@ Route::get('/', function (){
 });
 Route::get('/user/index', 'UserController@index');
 Route::get('/user/view', 'UserController@view');
+Route::get('/project/index', 'ProjectController@index');
+Route::get('/project/view', 'ProjectController@view');
