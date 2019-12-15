@@ -16,14 +16,14 @@ class CreateTimeEntriesTable extends Migration {
 		{
 			$table->bigInteger('id')->unsigned()->primary();
 			$table->timestamps();
-			$table->bigInteger('project_id')->nullable();
-			$table->bigInteger('user_id')->unsigned()->default(0)->comment('toggl user ID');
+			$table->bigInteger('project_id')->unsigned()->nullable()->index('project_id');
+			$table->bigInteger('user_id')->unsigned()->nullable()->index('user_id')->comment('toggl user ID');
 			$table->dateTime('start');
 			$table->dateTime('stop');
 			$table->integer('duration');
 			$table->string('description', 50)->nullable()->comment('toggl time entry description');
-			$table->bigInteger('task_id')->nullable();
-			$table->bigInteger('workspace_id')->nullable();
+			$table->bigInteger('task_id')->unsigned()->nullable()->index('task_id');
+			$table->bigInteger('workspace_id')->unsigned()->nullable()->index('workspace_id');
 		});
 	}
 

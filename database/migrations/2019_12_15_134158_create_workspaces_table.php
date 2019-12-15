@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateClientsTable extends Migration {
+class CreateWorkspacesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,10 @@ class CreateClientsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('clients', function(Blueprint $table)
+		Schema::create('workspaces', function(Blueprint $table)
 		{
-			$table->bigInteger('id')->nullable();
+			$table->bigInteger('id')->unsigned()->primary();
 			$table->timestamps();
-			$table->bigInteger('workspace_id')->nullable();
-			$table->string('name', 50)->nullable();
 		});
 	}
 
@@ -29,7 +27,7 @@ class CreateClientsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('clients');
+		Schema::drop('workspaces');
 	}
 
 }

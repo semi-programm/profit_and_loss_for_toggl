@@ -14,7 +14,7 @@ class CreateProjectsTable extends Migration {
 	{
 		Schema::create('projects', function(Blueprint $table)
 		{
-			$table->bigInteger('id')->unsigned()->primary()->comment('toggl project ID');
+			$table->bigInteger('id')->unsigned()->primary();
 			$table->timestamps();
 			$table->string('name')->nullable()->comment('名');
 			$table->float('est_time_high', 10, 0)->nullable()->comment('リスク込み工数');
@@ -27,8 +27,8 @@ class CreateProjectsTable extends Migration {
 			$table->dateTime('finished_time')->nullable()->comment('プロジェクトを閉じた時間');
 			$table->boolean('is_finished')->default(0)->comment('終了フラグ');
 			$table->boolean('is_skip_rank')->default(0)->comment('ランキングスキップフラグ');
-			$table->bigInteger('client_id')->nullable()->comment('クライアントID');
-			$table->bigInteger('workspace_id')->unsigned()->default(0)->comment('ワークスペースID');
+			$table->bigInteger('client_id')->unsigned()->nullable()->index('client_id')->comment('クライアントID');
+			$table->bigInteger('workspace_id')->unsigned()->nullable()->index('workspace_id')->comment('ワークスペースID');
 		});
 	}
 

@@ -14,11 +14,11 @@ class CreateTaskTable extends Migration {
 	{
 		Schema::create('task', function(Blueprint $table)
 		{
-			$table->bigInteger('id')->nullable();
+			$table->bigInteger('id')->unsigned()->primary();
 			$table->timestamps();
 			$table->string('name', 50)->nullable();
-			$table->bigInteger('workspace_id')->nullable();
-			$table->bigInteger('project_id')->nullable();
+			$table->bigInteger('project_id')->unsigned()->nullable()->index('project_id');
+			$table->bigInteger('workspace_id')->unsigned()->nullable()->index('workspace_id');
 			$table->integer('est_sec')->nullable();
 		});
 	}
