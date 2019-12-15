@@ -12,7 +12,8 @@
         "fideloper/proxy": "^4.0",
         "jeroennoten/laravel-adminlte": "~3.0",
         "laravel/framework": "6.0.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "oscarafdev/migrations-generator": "2.0.13"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
