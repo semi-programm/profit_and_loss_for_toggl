@@ -14,7 +14,7 @@
 Route::get('/', function (){
     return view('welcome');
 });
-Route::get('/user/index', 'UserController@index');
-Route::get('/user/view', 'UserController@view');
-Route::get('/project/index', 'ProjectController@index');
-Route::get('/project/view', 'ProjectController@view');
+Route::get('/user', 'UserController@index');
+Route::get('/user/{ id }', 'UserController@view');
+Route::get('/project', 'ProjectController@index');
+// Route::get('/project/view', 'ProjectController@view');

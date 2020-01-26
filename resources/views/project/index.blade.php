@@ -3,32 +3,27 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-<h1>Dashboard</h1>
+<h1>Projects</h1>
 @stop
 
 @section('content')
 <div class="col-12">
   <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Responsive Hover Table</h3>
-      <div class="card-tools">
-      </div>
-    </div>
-    <!-- /.card-header -->
     <div class="card-body table-responsive p-0">
-
       <table class="table table-hover">
         <thead>
           <tr>
             <th>ID</th>
-            <th>{{ __('user_name') }}</th>
+            <th>name</th>
           </tr>
         </thead>
         <tbody>
-          @foreach ($users as $user)
+          @foreach ($projects as $project)
           <tr>
-            <td>{{$user->user_id}}</td>
-            <td><a href="{{ action('UserController@view') }}">{{$user->name}}</a></td>
+            <td>{{ $project->id }}</td>
+            <td>
+                {{ $project->name }}
+            </td>
           </tr>
           @endforeach
         </tbody>

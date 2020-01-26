@@ -20,15 +20,13 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>ID</th>
             <th>{{ __('user_name') }}</th>
           </tr>
         </thead>
         <tbody>
           @foreach ($users as $user)
           <tr>
-            <td>{{$user->user_id}}</td>
-            <td><a href="{{ action('UserController@view') }}">{{$user->name}}</a></td>
+            <td><a href="{{ action('UserController@view', $user->id) }}">{{$user->name}}</a></td>
           </tr>
           @endforeach
         </tbody>
