@@ -6,15 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 
 
-class User extends Model
+class TimeEntries extends Model
 {
     protected $fillable = [
         'id',
-        'name',
-        'mail',
-        'created_at_toggl',
         'workspace_id',
-        'password',
+        'user_id',
+        'start',
+        'stop',
+        'duration',
+        'description',
+        'task_id',
+        'project_id',
         'created_at',
         'updated_at',
     ];

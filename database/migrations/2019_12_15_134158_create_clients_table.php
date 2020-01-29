@@ -16,7 +16,7 @@ class CreateClientsTable extends Migration {
 		{
 			$table->bigInteger('id')->unsigned()->primary();
 			$table->timestamps();
-			$table->string('name', 50)->nullable();
+			$table->string('name', 255)->nullable();
 			$table->bigInteger('workspace_id')->unsigned()->nullable()->index('workspace_id');
 		});
 	}

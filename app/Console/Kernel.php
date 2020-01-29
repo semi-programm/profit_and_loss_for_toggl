@@ -13,7 +13,13 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        \App\Console\Commands\GetTogglProjects::class,
+        \App\Console\Commands\GetTogglWorkspaces::class,
+        \App\Console\Commands\GetTogglClients::class,
+        \App\Console\Commands\GetTogglUsers::class,
+        \App\Console\Commands\GetTogglTags::class,
+        \App\Console\Commands\GetTogglTasks::class,
+        \App\Console\Commands\GetTogglTimeEntries::class,
     ];
 
     /**
@@ -24,6 +30,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        // ここにスケジュールの登録。
         // $schedule->command('inspire')
         //          ->hourly();
     }
