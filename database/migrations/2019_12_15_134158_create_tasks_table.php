@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateTaskTable extends Migration {
+class CreateTasksTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -31,7 +31,7 @@ class CreateTaskTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('task');
+		Schema::drop('tasks');
 	}
 
 }
