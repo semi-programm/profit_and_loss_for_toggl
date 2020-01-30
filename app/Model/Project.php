@@ -26,4 +26,25 @@ class Project extends Model
         'client_id',
         'workspace_id',
     ];
+
+    public function timeEntries()
+    {
+        return $this->hasMany('App\Model\TimeEntry');
+    }
+
+    public function client()
+    {
+        return $this->belongsTo('App\Model\ClientModel');
+    }
+
+    public function workspace()
+    {
+        return $this->belongsTo('App\Model\Workspace');
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany('App\Model\Task');
+    }
+
 }

@@ -18,4 +18,19 @@ class Task extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function project()
+    {
+        return $this->belongsTo('App\Model\Project');
+    }
+
+    public function workspace()
+    {
+        return $this->belongsTo('App\Model\Workspace');
+    }
+
+    public function timeEntries()
+    {
+        return $this->belongsTo('App\Model\TimeEntry');
+    }
 }

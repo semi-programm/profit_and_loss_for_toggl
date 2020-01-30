@@ -26,4 +26,9 @@ class Tag extends Model
         // 'client_id',
         'workspace_id',
     ];
+
+    public function workspace()
+    {
+        return $this->belongsTo('App\Model\Workspace');
+    }
 }

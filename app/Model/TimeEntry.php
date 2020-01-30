@@ -21,4 +21,25 @@ class TimeEntry extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function project()
+    {
+        return $this->belongsTo('App\Model\Project');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Model\User');
+    }
+
+    public function tasks()
+    {
+        return $this->hasOne('App\Model\Task');
+    }
+
+    public function workspace()
+    {
+        return $this->belongsTo('App\Model\Workspace');
+    }
+
 }

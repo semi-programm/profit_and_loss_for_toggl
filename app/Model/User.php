@@ -18,4 +18,9 @@ class User extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function timeEntries()
+    {
+        return $this->hasMany('App\Model\TimeEntry');
+    }
 }

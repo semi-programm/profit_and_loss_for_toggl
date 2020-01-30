@@ -29,4 +29,14 @@ class ClientModel extends Model
         // 'client_id',
         'workspace_id',
     ];
+
+    public function project()
+    {
+        return $this->hasOne('App\Model\Project');
+    }
+
+    public function workspace()
+    {
+        return $this->belongsTo('App\Model\Project');
+    }
 }

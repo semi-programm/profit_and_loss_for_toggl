@@ -26,4 +26,29 @@ class Workspace extends Model
         // 'client_id',
         // 'workspace_id',
     ];
+
+    public function projects()
+    {
+        return $this->hasMany('App\Model\Project');
+    }
+
+    public function clients()
+    {
+        return $this->hasMany('App\Model\ClientModel');
+    }
+
+    public function tags()
+    {
+        return $this->hasMany('App\Model\Tag');
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany('App\Model\Task');
+    }
+
+    public function timeEntries()
+    {
+        return $this->hasMany('App\Model\TimeEntry');
+    }
 }

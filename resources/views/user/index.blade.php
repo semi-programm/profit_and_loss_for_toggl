@@ -8,33 +8,37 @@
 
 @section('content')
 <div class="col-12">
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Responsive Hover Table</h3>
-      <div class="card-tools">
-      </div>
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body table-responsive p-0">
+	<div class="card">
+		<div class="card-header">
+			<h3 class="card-title">Responsive Hover Table</h3>
+			<div class="card-tools">
+			</div>
+		</div>
+		<!-- /.card-header -->
+		<div class="card-body table-responsive p-0">
 
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>{{ __('user_name') }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach ($users as $user)
-          <tr>
-            <td><a href="{{ action('UserController@view', $user->id) }}">{{$user->name}}</a></td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
-    </div>
-    <!-- /.card-body -->
-  </div>
-  <!-- /.card -->
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>{{ __('user_name') }}</th>
+						<th>sum_time</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach ($users as $user)
+					<tr>
+						<td>{{ $user->id }}</td>
+						<td><a href="{{ action('UserController@view', $user->id) }}">{{$user->name}}</a></td>
+						<td>{{ round($user->sum_time, 0) }}</td>
+					</tr>
+					@endforeach
+				</tbody>
+			</table>
+		</div>
+		<!-- /.card-body -->
+	</div>
+	<!-- /.card -->
 </div>
 @stop
 
@@ -45,7 +49,7 @@
 
 @section('js')
 <script>
-  console.log('Hi!');
+	console.log('Hi!');
 </script>
 @stop
 @section('content')
