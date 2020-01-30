@@ -12,10 +12,10 @@ class Usercontroller extends Controller
     {
         $users = User::all();
 
-        $month = '01';
+        $this_month = Carbon::now()->month;
 
-        $users->each(function($user) use ($month){
-            $times = $user->timeEntries()->whereMonth('start', '=' ,$month)->get();
+        $users->each(function($user) use ($this_month){
+            $times = $user->timeEntries()->whereMonth('start', '=' ,$this_month)->get();
             $sum_time = $times->sum('duration'); //単位はms
             $user['sum_time'] = $sum_time/(1000*60*60);
         });
