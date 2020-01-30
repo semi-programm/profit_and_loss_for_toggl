@@ -307,7 +307,7 @@ class GetTogglDataController extends Controller
     public function saveTimeEntries($since, $until)
     {
         $workspaces = Workspace::all();
-        $workspaces->each(function ($workspace) {
+        $workspaces->each(function ($workspace) use($since, $until){
             $page = 1;
             $entries = self::getTimeEntries($workspace->id, $since, $until, $page);
             $count = ceil($entries['total_count'] / $entries['per_page']);

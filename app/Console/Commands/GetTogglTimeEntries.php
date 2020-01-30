@@ -42,13 +42,19 @@ class GetTogglTimeEntries extends Command
         $get_toggl = new GetTogglDataController;
         $since = $this->argument('since');
         $until = $this->argument('until');
-        if (!Carbon::hasFormat($since, 'Y-m-d') || !Carbon::hasFormat($until, 'Y-m-d')) {
+        if (!Carbon::hasFormat($since, 'Y-m-d')) {
             echo '日付フォーマットは2020-10-10です';
             return;
         }
         if (!$until) {
             $until = Carbon::now()->format('Y-m-d');
+        } else {
+            if (!Carbon::hasFormat($since, 'Y-m-d')) {
+                echo '日付フォーマットは2020-10-10です';
+                return;
+            }
         }
+        echo $since.'~'.$until;
         $get_toggl->saveTimeEntries($since, $until);
     }
 }
