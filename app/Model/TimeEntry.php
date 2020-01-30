@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 
 
-class TimeEntries extends Model
+class TimeEntry extends Model
 {
     protected $fillable = [
         'id',

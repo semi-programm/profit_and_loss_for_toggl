@@ -9,7 +9,7 @@ use App\Model\ClientModel;
 use App\Model\Tag;
 use App\Model\User;
 use App\Model\Task;
-use App\Model\TimeEntries;
+use App\Model\TimeEntry;
 use Illuminate\Support\Carbon;
 
 class GetTogglDataController extends Controller
@@ -285,7 +285,7 @@ class GetTogglDataController extends Controller
     {
         $entries = self::getTimeEntries($workspace_id, $since, $until, $page);
         foreach ($entries['data'] as $entry) {
-            TimeEntries::updateOrCreate(
+            TimeEntry::updateOrCreate(
                 [
                     'id' => $entry['id'],
                 ],
