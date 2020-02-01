@@ -10,11 +10,11 @@ class Project extends Model
 {
     protected $fillable = [
         'id',
-        'created_at',
-        'updated_at',
         'name',
-        'est_time_high',
-        'est_time_low',
+        'client_id',
+        'workspace_id',
+
+        'est_time',
         'est_price',
         'm_price',
         'progress',
@@ -23,8 +23,8 @@ class Project extends Model
         'finished_time',
         'is_finished',
         'is_skip_rank',
-        'client_id',
-        'workspace_id',
+        'created_at',
+        'updated_at',
     ];
 
     public function timeEntries()
