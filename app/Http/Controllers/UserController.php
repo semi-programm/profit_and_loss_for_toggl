@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use App\Model\User;
 use Carbon\CarbonImmutable as Carbon;
 use Yasumi\Yasumi;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $users = User::all();
 
-        // $this_month = Carbon::now()->month;
-        $this_month = Carbon::now()->subMonth()->month;
+        $this_month = Carbon::now()->month;
 
         // 労働時間合計
         $users->each(function($user) use ($this_month){
@@ -24,28 +23,36 @@ class UserController extends Controller
         });
 
         // 平日日数
-        $startDate = Carbon::now();
-        $endDate = $startDate->endOfMonth();
-        $weekdays = $this->getWeekdays($startDate, $endDate);
+        $weekdays = $this->getWeekdays(Carbon::now(), Carbon::now()->endOfMonth());
+
+        // 出勤日数
+        $worked_days = $this->getWeekdays(Carbon::now()->firstOfMonth(), Carbon::now());
 
         // 残業時間
-        $users->each(function($user) use($weekdays)
+        $users->each(function($user) use($worked_days)
         {
-            $office_hours = $weekdays*8;
+            $office_hours = $worked_days*8;
             $overtime_hours = $user->working_time - $office_hours;
             $user['overtime'] = $overtime_hours;
         });
 
-        return view ('user.index', ['users' => $users]);
+        return view ('user.index', compact('users', 'weekdays'));
     }
 
-    public function view()
+    public function show($user_id)
     {
-        $users = User::all();
-        return view('user.view', $users);
+        $user = User::find($user_id);
+        return view('user.view', compact('user'));
     }
 
-    public function getWeekdays(Carbon $start_date, Carbon $end_date): int
+    public function destroy($user_id)
+    {
+        User::find($user_id)->delete();
+
+        return redirect('/')->with('flash_message', 'Post Added!');
+    }
+
+    private function getWeekdays(Carbon $start_date, Carbon $end_date): int
     {
         $year = $start_date->year;
         // 土日を除く平日を取得

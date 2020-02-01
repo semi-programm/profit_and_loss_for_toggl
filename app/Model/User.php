@@ -11,17 +11,17 @@ class User extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = [
-        'id',
-        'name',
-        'mail',
-        'created_at_toggl',
-        'workspace_id',
+    // protected $fillable = [
+    //     'id',
+    //     'name',
+    //     'mail',
+    //     'created_at_toggl',
+    //     'workspace_id',e
 
-        'password',
-        'created_at',
-        'updated_at',
-    ];
+    //     'password',
+    //     'created_at',
+    //     'updated_at',
+    // ];
 
     public function timeEntries()
     {

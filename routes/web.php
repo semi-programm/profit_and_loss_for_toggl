@@ -14,7 +14,7 @@
 Route::get('/', function (){
     return view('welcome');
 });
-Route::get('/user', 'UserController@index');
-Route::get('/user/{ id }', 'UserController@view');
-Route::get('/project', 'ProjectController@index');
+
+Route::resource('user', 'UserController', ['only' => ['index', 'show', 'destroy']]);
+Route::get('/project', 'ProjectController@index')->name('project');
 // Route::get('/project/view', 'ProjectController@view');
