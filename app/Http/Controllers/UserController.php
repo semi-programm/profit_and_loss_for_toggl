@@ -17,8 +17,8 @@ class UserController extends Controller
 
         // 労働時間合計
         $users->each(function($user) use ($this_month){
-            $times = $user->timeEntries()->whereMonth('start', '=' ,$this_month)->get();
-            $sum_time = $times->sum('duration'); //単位はms
+            $time_entries = $user->timeEntries()->whereMonth('start', '=' ,$this_month)->get();
+            $sum_time = $time_entries->sum('duration'); //単位はms
             $user['working_time'] = $sum_time/(1000*60*60);
         });
 
@@ -34,6 +34,12 @@ class UserController extends Controller
             $office_hours = $worked_days*8;
             $overtime_hours = $user->working_time - $office_hours;
             $user['overtime'] = $overtime_hours;
+        });
+
+        // コミット数
+        $users->each(function($user) use ($this_month){
+            $time_entries = $user->timeEntries()->whereMonth('start', '=' ,$this_month)->get();
+            $user['commit_number'] = $time_entries->groupBy('project_id')->count();
         });
 
         return view ('user.index', compact('users', 'weekdays'));

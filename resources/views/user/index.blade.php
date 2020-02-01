@@ -36,6 +36,7 @@
             <th>{{ __('user_name') }}</th>
             <th>sum_working_time</th>
             <th>overtime_hours</th>
+            <th>commit_number</th>
           </tr>
         </thead>
         <tbody>
@@ -46,6 +47,9 @@
             <td>{{ round($user->working_time, 0) }}</td>
             <td>
               {{ round($user->overtime, 0) }}
+            </td>
+            <td>
+              {{ $user->commit_number }}
             </td>
           </tr>
           @endforeach
