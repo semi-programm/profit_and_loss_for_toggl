@@ -22,7 +22,8 @@
 					<tr>
 						<th>id</th>
 						<th>{{ __('user_name') }}</th>
-						<th>sum_time</th>
+                        <th>sum_working_time</th>
+                        <th>overtime_hours</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -30,7 +31,10 @@
 					<tr>
 						<td>{{ $user->id }}</td>
 						<td><a href="{{ action('UserController@view', $user->id) }}">{{$user->name}}</a></td>
-						<td>{{ round($user->sum_time, 0) }}</td>
+                        <td>{{ round($user->working_time, 0) }}</td>
+                        <td>
+                            {{ $user->overtime }}
+                        </td>
 					</tr>
 					@endforeach
 				</tbody>
