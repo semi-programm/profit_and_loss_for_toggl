@@ -27,13 +27,11 @@
     </table>
   </div>
 </div>
-<form method="delete" action="{{ route('user.destroy', [$user->id]) }}">
+{{-- <form action="user/{{ $user->id }}" method="post"> --}}
+<form action="{{ route('user.destroy', ['user' => $user->id]) }}" id="" method="post">
+  @method('delete')
   @csrf
-  <button>
-    <a>
-      削除
-    </a>
-  </button>
+  <input type="submit" value="削除">
 </form>
 {{-- <button type="button" class="btn btn-block bg-gradient-danger btn-lg " href="{{ route('user.destroy', [$user->id]) }}">
 <i class="fas fa-trash"></i>

@@ -53,9 +53,8 @@ class UserController extends Controller
 
     public function destroy($user_id)
     {
-        User::find($user_id)->delete();
-
-        return redirect('/')->with('flash_message', 'Post Added!');
+        User::destroy($user_id);
+        return redirect('user')->with('flash_message', 'delete');
     }
 
     private function getWeekdays(Carbon $start_date, Carbon $end_date): int
