@@ -159,7 +159,7 @@ class GetTogglDataController extends Controller
     {
         $users = self::getUsers($workspace_id);
         foreach ($users as $user) {
-            User::updateOrCreate(
+            User::withTrashed()->updateOrCreate(
                 [
                     'id' => $user['id'],
                 ],
