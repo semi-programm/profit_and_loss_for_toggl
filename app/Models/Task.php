@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,16 +21,16 @@ class Task extends Model
 
     public function project()
     {
-        return $this->belongsTo('App\Model\Project');
+        return $this->belongsTo('App\Models\Project');
     }
 
     public function workspace()
     {
-        return $this->belongsTo('App\Model\Workspace');
+        return $this->belongsTo('App\Models\Workspace');
     }
 
     public function timeEntries()
     {
-        return $this->belongsTo('App\Model\TimeEntry');
+        return $this->belongsTo('App\Models\TimeEntry');
     }
 }

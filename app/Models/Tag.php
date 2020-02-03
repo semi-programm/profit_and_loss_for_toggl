@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,6 +18,6 @@ class Tag extends Model
 
     public function workspace()
     {
-        return $this->belongsTo('App\Model\Workspace');
+        return $this->belongsTo('App\Models\Workspace');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,11 +22,11 @@ class ClientModel extends Model
 
     public function project()
     {
-        return $this->hasOne('App\Model\Project');
+        return $this->hasOne('App\Models\Project');
     }
 
     public function workspace()
     {
-        return $this->belongsTo('App\Model\Project');
+        return $this->belongsTo('App\Models\Project');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,22 +29,27 @@ class Project extends Model
 
     public function timeEntries()
     {
-        return $this->hasMany('App\Model\TimeEntry');
+        return $this->hasMany('App\Models\TimeEntry');
+    }
+
+    public function latestTimeEntry()
+    {
+        return $this->hasOne('App\Models\TimeEntry')->orderBy('start', 'desc');
     }
 
     public function client()
     {
-        return $this->belongsTo('App\Model\ClientModel');
+        return $this->belongsTo('App\Models\ClientModel');
     }
 
     public function workspace()
     {
-        return $this->belongsTo('App\Model\Workspace');
+        return $this->belongsTo('App\Models\Workspace');
     }
 
     public function tasks()
     {
-        return $this->hasMany('App\Model\Task');
+        return $this->hasMany('App\Models\Task');
     }
 
 }

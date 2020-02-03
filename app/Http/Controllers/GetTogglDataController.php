@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
-use App\Model\Project;
-use App\Model\Workspace;
-use App\Model\ClientModel;
-use App\Model\Tag;
-use App\Model\User;
-use App\Model\Task;
-use App\Model\TimeEntry;
+use App\Models\Project;
+use App\Models\Workspace;
+use App\Models\ClientModel;
+use App\Models\Tag;
+use App\Models\User;
+use App\Models\Task;
+use App\Models\TimeEntry;
 use Illuminate\Support\Carbon;
 
 class GetTogglDataController extends Controller

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,26 +17,26 @@ class Workspace extends Model
 
     public function projects()
     {
-        return $this->hasMany('App\Model\Project');
+        return $this->hasMany('App\Models\Project');
     }
 
     public function clients()
     {
-        return $this->hasMany('App\Model\ClientModel');
+        return $this->hasMany('App\Models\ClientModel');
     }
 
     public function tags()
     {
-        return $this->hasMany('App\Model\Tag');
+        return $this->hasMany('App\Models\Tag');
     }
 
     public function tasks()
     {
-        return $this->hasMany('App\Model\Task');
+        return $this->hasMany('App\Models\Task');
     }
 
     public function timeEntries()
     {
-        return $this->hasMany('App\Model\TimeEntry');
+        return $this->hasMany('App\Models\TimeEntry');
     }
 }
