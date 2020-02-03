@@ -22,7 +22,7 @@ class CreateTimeEntriesTable extends Migration {
 			$table->dateTime('start')->comment('開始日時');
 			$table->dateTime('stop')->comment('終了日時');
 			$table->integer('duration')->comment('計測時間');
-			$table->string('description', 50)->nullable()->comment('toggl time entry description')->comment('詳細');
+			$table->string('description', 255)->nullable()->comment('toggl time entry description')->comment('詳細');
 			$table->bigInteger('task_id')->unsigned()->nullable()->index('task_id');
 			$table->bigInteger('workspace_id')->unsigned()->nullable()->index('workspace_id');
 		});
