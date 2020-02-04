@@ -40,8 +40,8 @@ class ProjectController extends Controller
         $projects->each(function ($project) use ($latest_limit) {
             $time_entries = $project->timeEntries()->get();
             // time_entriesの合計
-            $sum_time = $time_entries->sum('duration');
-            $project['sum_time'] = $sum_time / (1000 * 60 * 60);
+            $sum_work_time = $time_entries->sum('duration');
+            $project['sum_work_time'] = $sum_work_time / (1000 * 60 * 60);
             // 最新のtime_entryを格納
             $project['latest_entry'] = $project->latestTimeEntry()->first() ? $project->latestTimeEntry()->first()->start : null;
             // 指定日以前のtime_entryがあったら、フラグ
@@ -56,14 +56,25 @@ class ProjectController extends Controller
             $date = new Carbon($project->latest_entry);
             $project->latest_entry = $date->format('Y/m/d');
             // 進捗の割合計算
-            if ($project->sum && $project->est_time) {
-                $project['cal_progress'] = ($project->sum / $project->est_time) * 100;
+            if ($project->sum_work_time && $project->est_time) {
+                $project['work_time_rate'] = ($project->sum_work_time / $project->est_time) * 100;
             }
 
-            // ($project->est_time - $project->sum)*$project->unit_price/10000;
+            // NOTE:単価はprojectの単価なので、1時間当たりの労働損益がプロジェクトごとに異なる。（もちろん、外注費も）
+            if ($project->est_time) {
+                $profit_time = $project->est_time - ($project->sum_work_time - ($project->out_price / $project->unit_price)) * (100 / $project->progress);
+            }
+            if ($project->est_price) {
+                $profit_price = $project->est_price - (($project->sum_work_time * $project->unit_price) - $project->out_price) * (100 / $project->progress);
+            }
+            if ($project->est_time) {
+                $remaining_time = $project->est_time - $project->sum_work_time - ($project->out_price / $project->unit_price);
+            }
+            $project['profit_time'] = $profit_time ?? null;
+            $project['profit_price'] = $profit_price ?? null;
+            $project['remaining_time'] = $remaining_time ?? null;
         });
 
         return $projects;
-
     }
 }

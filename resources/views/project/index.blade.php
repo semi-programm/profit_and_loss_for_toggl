@@ -15,58 +15,57 @@
           <tr>
             <th>ID</th>
             <th>name</th>
-            <th>sum_time</th>
             <th>latest</th>
+            <th>sum_work_time</th>
             <th>est_time</th>
+            <th>est_price</th>
             <th>unit_price</th>
             <th>progress</th>
-            <th>loss</th>
+            <th>profit_time</th>
+            <th>profit_price</th>
             <th>out_price</th>
             <th>is_skip_rank</th>
+            <th>remaining_time</th>
           </tr>
         </thead>
         <tbody>
           @foreach ($projects as $project)
-          <tr data-toggle="modal" data-target="#exampleModal"
-            data-id="{{ $project->id }}"
-            data-name="{{ $project->name }}"
-            data-est_time="{{ $project->est_time }}"
-            data-est_price="{{ $project->est_price }}"
-            data-out_price="{{ $project->out_price }}"
-            data-unit_price="{{ $project->unit_price }}"
-            data-progress="{{ $project->progress }}"
-            data-is_skip_rank="{{ $project->is_skip_rank }}"
-            >
+          <tr data-toggle="modal" data-target="#exampleModal" data-id="{{ $project->id }}"
+            data-name="{{ $project->name }}" data-est_time="{{ $project->est_time }}"
+            data-est_price="{{ $project->est_price }}" data-out_price="{{ $project->out_price }}"
+            data-unit_price="{{ $project->unit_price }}" data-progress="{{ $project->progress }}"
+            data-is_skip_rank="{{ $project->is_skip_rank }}">
             <td>
               <small>{{ $project->id }}</small>
             </td>
             <td>
               {{ $project->name }}
             </td>
-            <td>
-              {{ round($project->sum, 0) }}
-            </td>
             @if ($project->is_latest === 1)
-            <td style="color:red">{{ $project->latest_entry }}</td>
+            <td class="red">{{ $project->latest_entry }}</td>
             @else
             <td>{{ $project->latest_entry }}</td>
             @endif
             <td>
-              @if ($project->est_price)
-              ￥
-              {{ $project->est_price }}
-              @else
-              {{ $project->est_time }}
-              h
-              @endif
+              {{ round($project->sum_work_time, 1) }}
             </td>
-            <td>{{ $project->unit_price }}</td>
-            <td>{{ $project->progress }}</td>
-            @if ($project->cal_progress > $project->progress)
-            <td>￥{{ round(($project->est_time - $project->sum)*$project->unit_price/10000, 1) }}万</td>
+            <td>{{ $project->est_time }}h</td>
+            <td>￥{{ round($project->est_price/10000, 1) }}万</td>
+            <td>￥{{ $project->unit_price }}</td>
+            <td>{{ $project->progress }}%</td>
+            @if ($project->work_time_rate > $project->progress)
+            <td class="red">{{ round($project->profit_time, 1) }}</td>
+            @else
+            <td>{{ round($project->profit_time, 1) }}</td>
+            @endif
+            @if ($project->work_time_rate > $project->progress)
+            <td class="red">￥{{ round($project->profit_price/10000, 1) }}万</td>
+            @else
+            <td>￥{{ round($project->profit_price/10000, 1) }}万</td>
             @endif
             <td>{{ $project->out_price }}</td>
             <td>{{ $project->is_skip_rank }}</td>
+            <td>{{ round($project->remaining_time, 1) }}h</td>
           </tr>
           @endforeach
         </tbody>
@@ -132,6 +131,11 @@
 
 
 @section('css')
+<style>
+  .red{
+    color: red;
+  }
+</style>
 @stop
 
 @section('js')
