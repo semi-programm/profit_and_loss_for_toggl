@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 
 /**
- * Clientだと、namespaceが重複するので、ClientModelという名称で扱う。c
+ * Clientだと、namespaceが重複するので、ClientModelという名称で扱う。
  */
 class ClientModel extends Model
 {
     protected $table = 'clients';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'id',
         'name',
@@ -20,9 +21,9 @@ class ClientModel extends Model
         'updated_at',
     ];
 
-    public function project()
+    public function projects()
     {
-        return $this->hasOne('App\Models\Project');
+        return $this->hasMany('App\Models\Project', 'client_id');
     }
 
     public function workspace()

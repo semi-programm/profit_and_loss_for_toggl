@@ -14,28 +14,7 @@ class ProjectController extends Controller
         $projects = Project::orderBy('id', 'desc')->get();
         $latest_limit = Carbon::now()->subMonth();
 
-        // 時間合計, 最新のtime entryの取得
-        $projects->each(function ($project) use ($latest_limit) {
-            $time_entries = $project->timeEntries()->get();
-            // time_entriesの合計
-            $sum = $time_entries->sum('duration');
-            $project['sum'] = $sum / (1000 * 60 * 60);
-            // 最新のtime_entryを格納
-            $project['latest_entry'] = $project->latestTimeEntry()->first() ? $project->latestTimeEntry()->first()->start : null;
-            // 指定日以前のtime_entryがあったら、フラグ
-            if ($latest_limit->lt($project->latest_entry)) {
-                $project['is_latest'] = 0;
-            } else {
-                $project['is_latest'] = 1;
-            }
-            // 日付のフォーマット
-            $date = new Carbon($project->latest_entry);
-            $project->latest_entry = $date->format('Y/m/d');
-            // 進捗の割合計算
-            if ($project->sum && $project->est_time) {
-                $project['cal_progress'] = ($project->sum / $project->est_time) * 100;
-            }
-        });
+        $projects = $this->sumTimeEntries($projects, $latest_limit);
 
         return view('project.index', compact('projects'));
     }
@@ -53,5 +32,38 @@ class ProjectController extends Controller
     {
         $projects = Project::all();
         return view('project.view', $projects);
+    }
+
+    // 時間合計, 最新のtime entryの取得
+    public function sumTimeEntries($projects, $latest_limit = null)
+    {
+        $projects->each(function ($project) use ($latest_limit) {
+            $time_entries = $project->timeEntries()->get();
+            // time_entriesの合計
+            $sum_time = $time_entries->sum('duration');
+            $project['sum_time'] = $sum_time / (1000 * 60 * 60);
+            // 最新のtime_entryを格納
+            $project['latest_entry'] = $project->latestTimeEntry()->first() ? $project->latestTimeEntry()->first()->start : null;
+            // 指定日以前のtime_entryがあったら、フラグ
+            if ($latest_limit) {
+                if ($latest_limit->lt($project->latest_entry)) {
+                    $project['is_latest'] = 0;
+                } else {
+                    $project['is_latest'] = 1;
+                }
+            }
+            // 日付のフォーマット
+            $date = new Carbon($project->latest_entry);
+            $project->latest_entry = $date->format('Y/m/d');
+            // 進捗の割合計算
+            if ($project->sum && $project->est_time) {
+                $project['cal_progress'] = ($project->sum / $project->est_time) * 100;
+            }
+
+            // ($project->est_time - $project->sum)*$project->unit_price/10000;
+        });
+
+        return $projects;
+
     }
 }
