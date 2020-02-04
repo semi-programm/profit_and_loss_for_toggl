@@ -16,6 +16,8 @@ Route::get('/', function (){
 });
 
 Route::resource('user', 'UserController', ['only' => ['index', 'show', 'destroy']]);
-Route::get('/project', 'ProjectController@index')->name('project');
-Route::post('/project', 'ProjectController@post')->name('project.post');
+// Route::get('/project', 'ProjectController@index')->name('project');
+// Route::post('/project', 'ProjectController@post')->name('project.post');
+Route::resource('project', 'ProjectController', ['only' => ['index', 'update']]);
+
 // Route::get('/project/view', 'ProjectController@view');

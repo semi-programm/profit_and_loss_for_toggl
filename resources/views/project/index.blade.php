@@ -86,11 +86,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="POST" action="{{ route('project.post') }}">
+      <form method="POST" action="{{ route('project.update', ['project' => $project->id]) }}">
         @csrf
-        @method('post')
+        @method('put')
         <div class="modal-body">
-          <table class="table table-bordered">
+          <table class="table table-bordered sticky_table">
             <tbody>
               <input type="hidden" name="id" id="id">
               <tr>

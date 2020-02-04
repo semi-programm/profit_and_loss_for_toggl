@@ -40,7 +40,7 @@ class ProjectController extends Controller
         return view('project.index', compact('projects'));
     }
 
-    public function post(Request $request)
+    public function update(Request $request)
     {
         $project = Project::find($request->id);
         $project->fill($request->all())->save();
