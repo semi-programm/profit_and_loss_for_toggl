@@ -23,7 +23,7 @@ class UserController extends Controller
         });
 
         // 平日日数
-        $weekdays = $this->getWeekdays(Carbon::now(), Carbon::now()->endOfMonth());
+        $weekdays = $this->getWeekdays(Carbon::now()->firstOfMonth(), Carbon::now()->endOfMonth());
 
         // 出勤日数
         $worked_days = $this->getWeekdays(Carbon::now()->firstOfMonth(), Carbon::now());
@@ -42,7 +42,7 @@ class UserController extends Controller
             $user['commit_number'] = $time_entries->groupBy('project_id')->count();
         });
 
-        return view ('user.index', compact('users', 'weekdays'));
+        return view ('user.index', compact('users', 'weekdays', 'worked_days'));
     }
 
     public function show($user_id)
