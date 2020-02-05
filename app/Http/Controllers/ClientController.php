@@ -17,10 +17,13 @@ class ClientController extends Controller
             $projects = $client->projects()->get();
             $project_func = new ProjectController;
             $projects = $project_func->sumTimeEntries($projects);
-            $client['time_sum'] = $projects->sum('sum');
-            $client['est_time_sum'] = $projects->sum('sum');
-            $client['est_price_sum'] = $projects->sum('sum');
-
+            $client['sum_work_time'] = $projects->sum('sum_work_time');
+            $client['sum_est_time'] = $projects->sum('est_time');
+            $client['sum_est_price'] = $projects->sum('est_price');
+            $client['sum_profit_time'] = $projects->sum('profit_time');
+            $client['sum_profit_price'] = $projects->sum('profit_price');
         });
+
+        return view('client.index', compact('clients'));
     }
 }

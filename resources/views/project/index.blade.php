@@ -13,7 +13,6 @@
       <table class="table table-hover table-bordered">
         <thead>
           <tr>
-            <th>ID</th>
             <th>name</th>
             <th>latest</th>
             <th>sum_work_time</th>
@@ -36,10 +35,9 @@
             data-unit_price="{{ $project->unit_price }}" data-progress="{{ $project->progress }}"
             data-is_skip_rank="{{ $project->is_skip_rank }}">
             <td>
-              <small>{{ $project->id }}</small>
-            </td>
-            <td>
-              {{ $project->name }}
+              <small>
+                {{ $project->name }}
+              </small>
             </td>
             @if ($project->is_latest === 1)
             <td class="red">{{ $project->latest_entry }}</td>
