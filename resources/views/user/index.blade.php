@@ -3,7 +3,9 @@
 @section('title', 'users')
 
 @section('content_header')
-<h1>今月の平日日数は{{ $weekdays }}</h1>
+<h1>
+  今月の出勤日数{{ $worked_days }}/{{ $weekdays }}
+</h1>
 @stop
 
 @section('content')
@@ -22,7 +24,6 @@
 <div class="col-12">
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Responsive Hover Table</h3>
       <div class="card-tools">
       </div>
     </div>
@@ -32,17 +33,15 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>id</th>
-            <th>{{ __('user_name') }}</th>
-            <th>sum_working_time</th>
-            <th>overtime_hours</th>
-            <th>commit_number</th>
+            <th>@lang('common.name')</th>
+            <th>@lang('common.sum_work_time')</th>
+            <th>@lang('common.overtime_hours')</th>
+            <th>@lang('common.commit_number')</th>
           </tr>
         </thead>
         <tbody>
           @foreach ($users as $user)
           <tr>
-            <td>{{ $user->id }}</td>
             <td><a href="{{ route('user.show', [$user->id]) }}">{{$user->name}}</a></td>
             <td>{{ round($user->working_time, 0) }}</td>
             <td>

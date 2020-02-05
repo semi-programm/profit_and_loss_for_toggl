@@ -11,20 +11,20 @@
   <div class="card">
     <div class="card-body table-responsive p-0">
       <table class="table table-hover table-bordered">
-        <thead>
+        <thead class="text-nowrap">
           <tr>
-            <th>name</th>
-            <th>latest</th>
-            <th>sum_work_time</th>
-            <th>est_time</th>
-            <th>est_price</th>
-            <th>unit_price</th>
-            <th>progress</th>
-            <th>profit_time</th>
-            <th>profit_price</th>
-            <th>out_price</th>
-            <th>is_skip_rank</th>
-            <th>remaining_time</th>
+            <th>@lang('common.name')</th>
+            <th>@lang('common.latest')</th>
+            <th>@lang('common.sum_work_time')</th>
+            <th>@lang('common.est_time')</th>
+            <th>@lang('common.est_price')</th>
+            <th>@lang('common.unit_price')</th>
+            <th>@lang('common.progress')</th>
+            <th>@lang('common.profit_time')</th>
+            <th>@lang('common.profit_price')</th>
+            <th>@lang('common.out_price')</th>
+            <th>@lang('common.is_skip_rank')</th>
+            <th>@lang('common.remaining_time')</th>
           </tr>
         </thead>
         <tbody>
@@ -92,7 +92,7 @@
               <input type="hidden" name="id" id="id">
               <tr>
                 <th>見積工数</th>
-                <td><input type="number" name="est_time" class="form-control" id="est_time"></td>
+                <td><input type="number" step="0.1" name="est_time" class="form-control" id="est_time"></td>
               </tr>
               <tr>
                 <th>見積金額<small>(提出した額)</small></th>
@@ -108,7 +108,7 @@
               </tr>
               <tr>
                 <th>進捗</th>
-                <td><input type="number" name="progress" class="form-control" id="progress"></td>
+                <td><input type="number" name="progress" min="0" max="100" class="form-control" id="progress"></td>
               </tr>
               <tr>
                 <th>ランキングスキップ</th>

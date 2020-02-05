@@ -13,12 +13,12 @@
       <table class="table table-hover table-bordered">
         <thead>
           <tr>
-            <th>name</th>
-            <th>sum_work_time</th>
-            <th>sum_est_time</th>
-            <th>sum_est_price</th>
-            <th>sum_profit_time</th>
-            <th>sum_profit_price</th>
+            <th>@lang('common.name')</th>
+            <th>@lang('common.work_time')</th>
+            <th>@lang('common.est_time')</th>
+            <th>@lang('common.est_price')</th>
+            <th>@lang('common.profit_time')</th>
+            <th>@lang('common.profit_price')</th>
           </tr>
         </thead>
         <tbody>
