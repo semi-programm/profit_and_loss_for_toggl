@@ -14,6 +14,7 @@ return [
     'out_price' => '外注費',
     'is_skip_rank' => 'ランキングskip',
     'remaining_time' => '残り時間',
+    'generalize' => '総括',
     // user
     'overtime_hours' => '残業時間',
     'commit_number' => 'コミット数',

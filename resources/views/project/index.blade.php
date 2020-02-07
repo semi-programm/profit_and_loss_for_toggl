@@ -25,16 +25,17 @@
             <th>@lang('common.out_price')</th>
             <th>@lang('common.is_skip_rank')</th>
             <th>@lang('common.remaining_time')</th>
+            <th>@lang('common.generalize')</th>
           </tr>
         </thead>
         <tbody>
           @foreach ($projects as $project)
-          <tr data-toggle="modal" data-target="#exampleModal" data-id="{{ $project->id }}"
-            data-name="{{ $project->name }}" data-est_time="{{ $project->est_time }}"
-            data-est_price="{{ $project->est_price }}" data-out_price="{{ $project->out_price }}"
-            data-unit_price="{{ $project->unit_price }}" data-progress="{{ $project->progress }}"
-            data-is_skip_rank="{{ $project->is_skip_rank }}">
-            <td>
+          <tr>
+            <td data-toggle="modal" data-target="#exampleModal" data-id="{{ $project->id }}"
+              data-name="{{ $project->name }}" data-est_time="{{ $project->est_time }}"
+              data-est_price="{{ $project->est_price }}" data-out_price="{{ $project->out_price }}"
+              data-unit_price="{{ $project->unit_price }}" data-progress="{{ $project->progress }}"
+              data-is_skip_rank="{{ $project->is_skip_rank }}">
               <small>
                 {{ $project->name }}
               </small>
@@ -64,6 +65,11 @@
             <td>{{ $project->out_price }}</td>
             <td>{{ $project->is_skip_rank }}</td>
             <td>{{ round($project->remaining_time, 1) }}h</td>
+            <td>
+              <button type="button" class="btn btn-block btn-info btn-sm">
+                <i class="fas fa-hand-paper"></i>
+              </button>
+            </td>
           </tr>
           @endforeach
         </tbody>
@@ -130,7 +136,7 @@
 
 @section('css')
 <style>
-  .red{
+  .red {
     color: red;
   }
 </style>
