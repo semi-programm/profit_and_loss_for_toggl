@@ -27,8 +27,9 @@ class CreateProjectsTable extends Migration {
 			$table->boolean('progress')->nullable()->default(0)->comment('進捗度[%]');
 			$table->integer('out_price')->unsigned()->nullable()->default(0)->comment('外注費[yen]');
 			$table->smallInteger('unit_price')->unsigned()->nullable()->default(4400)->comment('単価(yen)');
-			$table->dateTime('finished_time')->nullable()->comment('プロジェクトを終了した時間');
-			$table->boolean('is_finished')->default(0)->comment('終了フラグ');
+			// $table->dateTime('finished_time')->nullable()->comment('プロジェクトを終了した時間');
+			$table->dateTime('finished_at')->nullable()->comment('プロジェクトを終了した時間');
+			// $table->boolean('is_finished')->default(0)->comment('終了フラグ');
 			$table->boolean('is_skip_rank')->default(0)->comment('ランキングスキップフラグ');
 		});
 	}

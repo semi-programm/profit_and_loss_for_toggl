@@ -11,7 +11,7 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         // なんとなく、ID降順表示で。
-        $projects = Project::orderBy('id', 'desc')->get();
+        $projects = Project::orderBy('id', 'desc')->whereNull('finished_at')->get();
         $latest_limit = Carbon::now()->subMonth();
 
         $projects = $this->sumTimeEntries($projects, $latest_limit);

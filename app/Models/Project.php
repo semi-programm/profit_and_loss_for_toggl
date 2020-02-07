@@ -16,12 +16,10 @@ class Project extends Model
 
         'est_time',
         'est_price',
-        'm_price',
         'progress',
         'out_price',
         'unit_price',
-        'finished_time',
-        'is_finished',
+        'finished_at',
         'is_skip_rank',
         'created_at',
         'updated_at',
