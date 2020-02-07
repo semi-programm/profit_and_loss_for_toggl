@@ -158,7 +158,12 @@
   modal.find('.modal-body #out_price').val(out_price)
   modal.find('.modal-body #unit_price').val(unit_price)
   modal.find('.modal-body #progress').val(progress)
-  modal.find('.modal-body #is_skip_rank').val(is_skip_rank)
+  if (is_skip_rank === 1) {
+    is_skip_rank = true;
+  }else{
+    is_skip_rank = false;
+  }
+  modal.find('.modal-body #is_skip_rank').prop('chcked',is_skip_rank)
 })
 </script>
 @stop
