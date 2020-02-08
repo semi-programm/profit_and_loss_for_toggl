@@ -50,4 +50,9 @@ class Project extends Model
         return $this->hasMany('App\Models\Task');
     }
 
+    public function review()
+    {
+        return $this->hasOne('App\Models\Review');
+    }
+
 }
