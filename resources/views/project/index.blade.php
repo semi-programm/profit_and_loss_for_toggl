@@ -25,13 +25,13 @@
             <th>@lang('common.out_price')</th>
             <th>@lang('common.is_skip_rank')</th>
             <th>@lang('common.remaining_time')</th>
-            <th>@lang('common.generalize')</th>
+            <th>@lang('common.review')</th>
           </tr>
         </thead>
         <tbody>
           @foreach ($projects as $project)
           <tr>
-            <td data-toggle="modal" data-target="#exampleModal" data-id="{{ $project->id }}"
+            <td data-toggle="modal" data-target="#edit-modal" data-id="{{ $project->id }}"
               data-name="{{ $project->name }}" data-est_time="{{ $project->est_time }}"
               data-est_price="{{ $project->est_price }}" data-out_price="{{ $project->out_price }}"
               data-unit_price="{{ $project->unit_price }}" data-progress="{{ $project->progress }}"
@@ -79,7 +79,7 @@
 </div>
 @stop
 
-@include('project.modal.edit')
+@include('project.modals.edit')
 
 
 @section('css')

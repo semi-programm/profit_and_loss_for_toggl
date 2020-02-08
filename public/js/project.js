@@ -1,4 +1,4 @@
-$('#exampleModal').on('show.bs.modal', function (event) {
+$('#edit-modal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // モーダル切替えボタン
     var id = button.data('id') // data-* 属性から情報を抽出
     var name = button.data('name')
@@ -11,7 +11,7 @@ $('#exampleModal').on('show.bs.modal', function (event) {
     // 必要に応じて、ここでAJAXリクエストを開始可能（コールバックで更新することも可能）
     // モーダルの内容を更新。ここではjQueryを使用するが、代わりにデータ・バインディング・ライブラリまたは他のメソッドを使用することも可能
     var modal = $(this)
-    modal.find('.modal-title').text(id + ':' + name)
+    modal.find('.modal-title').text(name)
     modal.find('.modal-body #id').val(id)
     modal.find('.modal-body #est_time').val(est_time)
     modal.find('.modal-body #est_price').val(est_price)
@@ -23,5 +23,5 @@ $('#exampleModal').on('show.bs.modal', function (event) {
     }else{
       is_skip_rank = false;
     }
-    modal.find('.modal-body #is_skip_rank').prop('chcked',is_skip_rank)
+    modal.find('.modal-body #is_skip_rank').prop('checked',is_skip_rank)
   })

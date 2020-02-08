@@ -1,10 +1,10 @@
 {{-- modal --}}
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">新メッセージ</h5>
+        <h5 class="modal-title" id="edit-modal-label">新メッセージ</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
           <span aria-hidden="true">&times;</span>
         </button>
