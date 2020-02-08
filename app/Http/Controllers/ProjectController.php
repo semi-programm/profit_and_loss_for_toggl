@@ -62,10 +62,10 @@ class ProjectController extends Controller
 
             // NOTE:単価はprojectの単価なので、1時間当たりの労働損益がプロジェクトごとに異なる。（もちろん、外注費も）
             if ($project->est_time) {
-                $profit_time = $project->est_time - ($project->sum_work_time - ($project->out_price / $project->unit_price)) * (100 / $project->progress);
+                $profit_time = $project->est_time - ($project->sum_work_time - ($project->out_price / $project->unit_price)) * $project->progress ? 0 : (100 / $project->progress);
             }
             if ($project->est_price) {
-                $profit_price = $project->est_price - (($project->sum_work_time * $project->unit_price) - $project->out_price) * (100 / $project->progress);
+                $profit_price = $project->est_price - (($project->sum_work_time * $project->unit_price) - $project->out_price) * $project->progress ? 0 : (100 / $project->progress);
             }
             if ($project->est_time) {
                 $remaining_time = $project->est_time - $project->sum_work_time - ($project->out_price / $project->unit_price);
