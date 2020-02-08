@@ -13,6 +13,7 @@
 
 Route::resource('user', 'UserController', ['only' => ['index', 'show', 'destroy']]);
 Route::resource('project', 'ProjectController', ['only' => ['index', 'update']]);
+Route::put('project/update', 'ProjectController@update')->name('project.update');
 Route::resource('client', 'ClientController', ['only' => ['index', 'update']]);
 
 Route::get('/', 'HomeController@index');
