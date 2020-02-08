@@ -15,8 +15,8 @@ class AddForeignKeysToReviewsTable extends Migration {
 		Schema::table('reviews', function(Blueprint $table)
 		{
 			$table->foreign('project_id', 'FK_reviews_projects')->references('id')->on('projects')->onUpdate('RESTRICT')->onDelete('RESTRICT');
-			$table->foreign('self_comment_user', 'FK_reviews_users')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('other_comment_user', 'FK_reviews_users_2')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('self_user_id', 'FK_reviews_users')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('other_user_id', 'FK_reviews_users_2')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
