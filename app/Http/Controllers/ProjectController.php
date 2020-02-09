@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\User;
 use Carbon\CarbonImmutable as Carbon;
 
 class ProjectController extends Controller
@@ -12,11 +13,12 @@ class ProjectController extends Controller
     {
         // なんとなく、ID降順表示で。
         $projects = Project::orderBy('id', 'desc')->whereNull('finished_at')->get();
+        $users = User::all()->pluck('name', 'id');
         $latest_limit = Carbon::now()->subMonth();
 
         $projects = $this->sumTimeEntries($projects, $latest_limit);
 
-        return view('project.index', compact('projects'));
+        return view('project.index', compact('projects', 'users'));
     }
 
     public function update(Request $request)

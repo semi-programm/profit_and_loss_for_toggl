@@ -25,3 +25,7 @@ $('#edit-modal').on('show.bs.modal', function (event) {
     }
     modal.find('.modal-body #is_skip_rank').prop('checked',is_skip_rank)
   })
+
+$('#review-modal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // モーダル切替えボタン
+  })

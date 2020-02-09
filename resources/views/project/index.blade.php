@@ -66,9 +66,9 @@
             <td>{{ $project->is_skip_rank }}</td>
             <td>{{ round($project->remaining_time, 1) }}h</td>
             <td>
-              <button type="button" class="btn btn-block btn-info btn-sm" data-toggle="modal"
-                data-id="#review-modal"
-                >
+              <button type="button" class="btn btn-block btn-info btn-sm" data-toggle="modal" data-target="#review-modal"
+                data-id="" data-project_id="{{ $project->id }}" data-self_comment="" data-other_comment=""
+                data-self_user="" data-other_user="" data-users="{{ $users }}">
                 <i class="fas fa-hand-paper"></i>
               </button>
             </td>
@@ -82,15 +82,11 @@
 @stop
 
 @include('project.modals.edit')
-@include('project.modals.review')
+@include('project.modals.review', [$project, $users])
 
 
 @section('css')
-<style>
-  .red {
-    color: red;
-  }
-</style>
+<link rel="stylesheet" href="{{ asset('css/common.css') }}">
 @stop
 
 @section('js')
