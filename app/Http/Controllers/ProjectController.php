@@ -12,7 +12,8 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         // なんとなく、ID降順表示で。
-        $projects = Project::orderBy('id', 'desc')->whereNull('finished_at')->get();
+        $projects = Project::with(['review'])
+        ->orderBy('projects.id', 'desc')->whereNull('finished_at')->get();
         $users = User::all()->pluck('name', 'id');
         $latest_limit = Carbon::now()->subMonth();
 
@@ -55,8 +56,10 @@ class ProjectController extends Controller
                 }
             }
             // 日付のフォーマット
-            $date = new Carbon($project->latest_entry);
-            $project->latest_entry = $date->format('Y/m/d');
+            if ($project->latest_entry) {
+                $date = new Carbon($project->latest_entry);
+                $project->latest_entry = $date->format('Y/m/d');
+            }
             // 進捗の割合計算
             if ($project->sum_work_time && $project->est_time) {
                 $project['work_time_rate'] = ($project->sum_work_time / $project->est_time) * 100;
