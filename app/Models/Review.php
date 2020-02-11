@@ -9,11 +9,12 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     protected $fillable = [
-        'id',
+        // 'id',
+        'project_id',
         'self_comment',
         'other_comment',
-        'self_user',
-        'other_user',
+        'self_user_id',
+        'other_user_id',
         'created_at',
         'updated_at',
     ];

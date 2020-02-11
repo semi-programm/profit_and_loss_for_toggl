@@ -7,9 +7,13 @@ use App\Models\Review;
 
 class ReviewController extends Controller
 {
-    public function create(Request $request)
+    public function updateOrCreate(Request $request)
     {
-        $flight = Review::create($request->all());
+        // dd($request);
+        $flight = Review::updateOrCreate(
+            ['id' =>$request->id],
+            $request->all()
+        );
         return redirect('project');
     }
 }

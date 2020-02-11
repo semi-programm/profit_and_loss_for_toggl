@@ -4,43 +4,48 @@
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
-      <h5 class="modal-title" id="review-modal-label">
-        {{ $project->name }}
-        <small>のレビュー</small>
-      </h5>
+        <h5 class="modal-title" id="review-modal-label">
+          {{ $project->name }}
+          <small>のレビュー</small>
+        </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="GET" action="{{ route('review.create') }}">
+      <form method="POST" action="{{ route('review.updateOrCreate') }}">
         @csrf
-        @method('get')
+        @method('post')
         <div class="modal-body">
           <table class="table table-bordered sticky_table">
             <tbody class="text-nowrap">
               <input type="hidden" name="project_id" value="{{ $project->id }}">
+              <input type="hidden" name="id" value="{{ $project->review->id }}">
               <tr>
                 <th class="edit-thead">自己評価ユーザー</th>
                 <td>
-                  {!! Form::select('self_user_id', $users) !!}
+                  {!! Form::select('self_user_id', $users, $project->review->self_user_id) !!}
                 </td>
               </tr>
               <tr>
                 <th>自己評価</th>
                 <td>
-                  <textarea name="self_comment" id="" rows="8"></textarea>
+                  <textarea name="self_comment" id="" rows="8">
+                    {{ $project->review->self_comment }}
+                  </textarea>
                 </td>
               </tr>
               <tr>
                 <th class="edit-thead">他者評価ユーザー</th>
                 <td>
-                  {!! Form::select('other_user_id', $users) !!}
+                  {!! Form::select('other_user_id', $users, $project->review->other_user_id) !!}
                 </td>
               </tr>
               <tr>
                 <th>他者評価</th>
                 <td>
-                  <textarea name="other_comment" id="" rows="8"></textarea>
+                  <textarea name="other_comment" id="" rows="8">
+                    {{ $project->review->other_comment }}
+                  </textarea>
                 </td>
               </tr>
             </tbody>

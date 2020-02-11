@@ -15,6 +15,6 @@ Route::resource('user', 'UserController', ['only' => ['index', 'show', 'destroy'
 Route::resource('project', 'ProjectController', ['only' => ['index', 'update']]);
 Route::put('project/update', 'ProjectController@update')->name('project.update');
 Route::resource('client', 'ClientController', ['only' => ['index', 'update']]);
-Route::resource('review', 'ReviewController', ['only' => ['update', 'create']]);
+Route::post('review/update-or-create', 'ReviewController@updateOrCreate')->name('review.updateOrCreate');
 
 Route::get('/', 'HomeController@index');
