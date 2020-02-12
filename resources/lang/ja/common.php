@@ -13,6 +13,7 @@ return [
     'profit_price' => '利益(￥)',
     'out_price' => '外注費',
     'is_skip_rank' => 'ランキングskip',
+    'skip' => 'skip',
     'remaining_time' => '残り時間',
     'review' => '評価',
     // user

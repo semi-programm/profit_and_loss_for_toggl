@@ -23,7 +23,7 @@
             <th>@lang('common.profit_time')</th>
             <th>@lang('common.profit_price')</th>
             <th>@lang('common.out_price')</th>
-            <th>@lang('common.is_skip_rank')</th>
+            <th>@lang('common.skip')</th>
             <th>@lang('common.remaining_time')</th>
             <th>@lang('common.review')</th>
           </tr>
@@ -63,7 +63,11 @@
             <td>￥{{ round($project->profit_price/10000, 1) }}万</td>
             @endif
             <td>{{ $project->out_price }}</td>
-            <td>{{ $project->is_skip_rank }}</td>
+            <td>
+              @if ($project->is_skip_rank)
+              <i class="fas fa-check"></i>
+              @endif
+            </td>
             <td>{{ round($project->remaining_time, 1) }}h</td>
             <td>
               <button type="button" class="btn btn-block btn-info btn-sm" data-toggle="modal"
