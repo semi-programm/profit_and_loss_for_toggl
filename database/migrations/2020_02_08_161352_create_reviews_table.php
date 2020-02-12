@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateReviewsTable extends Migration {
 
@@ -21,7 +22,8 @@ class CreateReviewsTable extends Migration {
 			$table->string('other_comment', 1023)->nullable()->comment('他者評価コメント');
 			$table->bigInteger('self_user_id')->unsigned()->nullable()->index('FK_reviews_users')->comment('自己評価ユーザー');
             $table->bigInteger('other_user_id')->unsigned()->nullable()->index('FK_reviews_users_2')->comment('他者評価ユーザー');
-            $table->timestamps();
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
 		});
 	}
 

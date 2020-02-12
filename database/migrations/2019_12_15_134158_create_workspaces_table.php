@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateWorkspacesTable extends Migration {
 
@@ -16,7 +17,8 @@ class CreateWorkspacesTable extends Migration {
 		Schema::create('workspaces', function(Blueprint $table)
 		{
 			$table->bigInteger('id')->unsigned()->primary();
-			$table->timestamps();
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
 		});
 	}
 

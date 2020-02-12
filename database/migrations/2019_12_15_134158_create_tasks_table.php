@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateTasksTable extends Migration {
 
@@ -21,7 +22,8 @@ class CreateTasksTable extends Migration {
 			$table->bigInteger('workspace_id')->unsigned()->nullable()->index('workspace_id');
             $table->integer('est_sec')->nullable()->comment('見積時間[h]');
 
-			$table->timestamps();
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
 		});
 	}
 

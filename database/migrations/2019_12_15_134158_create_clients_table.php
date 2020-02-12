@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateClientsTable extends Migration {
 
@@ -19,7 +20,8 @@ class CreateClientsTable extends Migration {
 			$table->string('name', 255)->nullable();
             $table->bigInteger('workspace_id')->unsigned()->nullable()->index('workspace_id');
 
-            $table->timestamps();
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
 		});
 	}
 
