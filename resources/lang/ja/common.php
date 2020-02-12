@@ -3,6 +3,8 @@
 return [
     // project
     'name' => '名',
+    'client' => 'クライアント',
+    'project' => 'プロジェクト',
     'latest' => '最新',
     'sum_work_time' => '作業時間',
     'est_time' => '見積時間',

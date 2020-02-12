@@ -12,7 +12,7 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         // なんとなく、ID降順表示で。
-        $projects = Project::with(['review'])
+        $projects = Project::with(['review', 'client'])
         ->orderBy('projects.id', 'desc')->whereNull('finished_at')->get();
         $users = User::all()->pluck('name', 'id');
         $latest_limit = Carbon::now()->subMonth();

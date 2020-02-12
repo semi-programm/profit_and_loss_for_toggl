@@ -13,7 +13,8 @@
       <table class="table table-hover table-bordered">
         <thead class="text-nowrap">
           <tr>
-            <th>@lang('common.name')</th>
+            <th>@lang('common.client')</th>
+            <th>@lang('common.project')</th>
             <th>@lang('common.latest')</th>
             <th>@lang('common.sum_work_time')</th>
             <th>@lang('common.est_time')</th>
@@ -31,6 +32,7 @@
         <tbody>
           @foreach ($projects as $project)
           <tr>
+            <td>{{ $project->client->name ?? null }}</td>
             <td data-toggle="modal" data-target="#edit-modal" data-id="{{ $project->id }}"
               data-name="{{ $project->name }}" data-est_time="{{ $project->est_time }}"
               data-est_price="{{ $project->est_price }}" data-out_price="{{ $project->out_price }}"
