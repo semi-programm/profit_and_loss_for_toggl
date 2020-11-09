@@ -13,20 +13,29 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        $this_month = Carbon::now()->month;
+        $month = $request->month ?? Carbon::now()->month;
+        $year = $request->year ?? Carbon::now()->year;
+        $thisYear = Carbon::now()->year;
 
         // 労働時間合計
-        $users->each(function($user) use ($this_month){
-            $time_entries = $user->timeEntries()->whereMonth('start', '=' ,$this_month)->get();
+        $users->each(function($user) use ($month, $year){
+            $time_entries = $user->timeEntries()
+            ->whereMonth('start',$month)
+            ->whereYear('start',$year)
+            ->get();
             $sum_time = $time_entries->sum('duration'); //単位はms
             $user['working_time'] = $sum_time/(1000*60*60);
+            // コミット数
+            $user['commit_number'] = $time_entries->groupBy('project_id')->count();
         });
 
         // 平日日数
-        $weekdays = $this->getWeekdays(Carbon::now()->firstOfMonth(), Carbon::now()->endOfMonth());
-
+        $firstDay = Carbon::parse($year.'-'.$month.'-01');
+        $weekdays = $this->getWeekdays($firstDay, $firstDay->endOfMonth());
         // 出勤日数
-        $worked_days = $this->getWeekdays(Carbon::now()->firstOfMonth(), Carbon::now());
+        // NOTE:今月を指定した場合、最終出勤日まで計算する。
+        $lastWorkedDay = (Carbon::now()->month == $month) ? Carbon::now() : $firstDay->endOfMonth();
+        $worked_days = $this->getWeekdays($firstDay, $lastWorkedDay);
 
         // 残業時間
         $users->each(function($user) use($worked_days)
@@ -36,13 +45,7 @@ class UserController extends Controller
             $user['overtime'] = $overtime_hours;
         });
 
-        // コミット数
-        $users->each(function($user) use ($this_month){
-            $time_entries = $user->timeEntries()->whereMonth('start', '=' ,$this_month)->get();
-            $user['commit_number'] = $time_entries->groupBy('project_id')->count();
-        });
-
-        return view ('user.index', compact('users', 'weekdays', 'worked_days'));
+        return view ('user.index', compact('users', 'weekdays', 'worked_days', 'year', 'month', 'thisYear'));
     }
 
     public function show($user_id)

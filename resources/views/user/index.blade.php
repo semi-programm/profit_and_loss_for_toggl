@@ -4,20 +4,29 @@
 
 @section('content_header')
 <h1>
-  今月の出勤日数{{ $worked_days }}/{{ $weekdays }}
+  {{ $year }}年{{ $month }}月の出勤日数{{ $worked_days }}/{{ $weekdays }}
 </h1>
 @stop
 
 @section('content')
 <div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <form class="form-inline">
-        <div class="form-group">
-          <input type="text" name="keyword" value="" placeholder="test">
-          <input type="submit" value="検索">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12">
+          <form class="">
+            <div class="form-group">
+              <label for="year">year</label>
+              {{Form::selectYear('year', 2013, $thisYear, $year, ['class' => 'form-control'])}}
+              <label for="month">month</label>
+              {{Form::selectRange('month','1' ,'12' ,$month ,['class' => 'form-control'])}}
+            </div>
+            <div class="form-grop">
+              <input type="submit" class="btn btn-primary" value="検索">
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </div>
